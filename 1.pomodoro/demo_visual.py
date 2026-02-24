@@ -7,7 +7,7 @@ ASCII アートで円形プログレスバーと色の変化を表現
 import math
 
 # デモ定数
-DEFAULT_ASCII_WIDTH = 40  # ASCII円形プログレスバーのデフォルト幅
+ASCII_CIRCLE_WIDTH = 40  # ASCII円形プログレスバーの幅
 
 
 def get_progress_color_name(remaining_seconds, total_seconds):
@@ -27,7 +27,7 @@ def format_time(seconds):
     return f"{minutes:02d}:{secs:02d}"
 
 
-def draw_circular_progress_ascii(progress, width=DEFAULT_ASCII_WIDTH):
+def draw_circular_progress_ascii(progress, width=ASCII_CIRCLE_WIDTH):
     """ASCII アートで円形プログレスバーを描画（時計回り、上から開始）"""
     center_x, center_y = width // 2, width // 2
     radius = width // 2 - 2

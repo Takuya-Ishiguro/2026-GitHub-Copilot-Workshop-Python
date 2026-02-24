@@ -161,6 +161,7 @@ def test_timer_logic():
     WORK_DURATION = 25
     SHORT_BREAK = 5
     LONG_BREAK = 15
+    TEST_SESSION_COUNT = 8  # テストするセッション数
     
     print(f"作業時間: {WORK_DURATION}分")
     print(f"短い休憩: {SHORT_BREAK}分")
@@ -170,7 +171,7 @@ def test_timer_logic():
     session_count = 0
     is_work_session = True
     
-    for i in range(8):
+    for i in range(TEST_SESSION_COUNT):
         if is_work_session:
             duration = WORK_DURATION
             session_type = "作業"

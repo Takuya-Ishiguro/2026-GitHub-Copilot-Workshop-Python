@@ -13,7 +13,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from app import Particle, PomodoroTimer
 
 # テスト定数
-NUM_UPDATE_ITERATIONS = 100  # パーティクル更新の反復回数
+NUM_UPDATE_ITERATIONS = 100  # パーティクル境界テストの反復回数
+PARTICLE_UPDATE_TEST_ITERATIONS = 10  # パーティクル更新テストの反復回数
 
 
 class TestParticle(unittest.TestCase):
@@ -38,7 +39,7 @@ class TestParticle(unittest.TestCase):
         self.assertIsNotNone(particle.vy)
         
         # 複数回更新して、位置が変化することを確認
-        for _ in range(10):
+        for _ in range(PARTICLE_UPDATE_TEST_ITERATIONS):
             particle.update()
         
         # 速度が0でない限り、位置は変化する
