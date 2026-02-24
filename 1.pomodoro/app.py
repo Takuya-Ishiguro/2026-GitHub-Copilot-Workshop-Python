@@ -54,7 +54,7 @@ class PomodoroTimer:
     LONG_BREAK = 15
     
     # アニメーション設定
-    FRAME_DELAY_MS = 16  # 約60FPS（1000ms / 60 ≈ 16ms）
+    FRAME_DELAY_MS = 16  # 約62.5FPS（1000ms / 16 = 62.5fps）
     
     def __init__(self, root):
         self.root = root
