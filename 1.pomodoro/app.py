@@ -73,6 +73,7 @@ class PomodoroTimer:
         self.is_work_time = True
         self.remaining_seconds = self.settings['work_duration'] * 60
         self.timer_thread = None
+        self.stop_event = threading.Event()
         
         # UIの構築
         self.setup_ui()
@@ -274,6 +275,7 @@ class PomodoroTimer:
         """タイマーを開始"""
         self.is_running = True
         self.start_button.config(text="一時停止")
+        self.stop_event.clear()
         
         # 開始音を再生（設定されている場合）
         if self.settings['sound_start']:
@@ -301,20 +303,32 @@ class PomodoroTimer:
     
     def run_timer(self):
         """タイマーのメインループ"""
-        while self.remaining_seconds > 0 and self.is_running:
-            time.sleep(1)
+        while self.remaining_seconds > 0 and not self.stop_event.is_set():
+            # より応答性の高い一時停止のため、100ms間隔でチェック
+            if self.stop_event.wait(0.1):
+                break
+            
             if self.is_running:
-                self.remaining_seconds -= 1
-                
-                # tick音を再生（設定されている場合）
-                if self.settings['sound_tick']:
-                    self.play_sound('tick')
-                
-                # UIを更新（メインスレッドで実行）
-                self.root.after(0, self.update_display)
+                # 1秒経過を10回のチェックで分割
+                for _ in range(10):
+                    if self.stop_event.wait(0.1):
+                        break
+                    if not self.is_running:
+                        break
+                else:
+                    # 1秒経過
+                    if self.is_running:
+                        self.remaining_seconds -= 1
+                        
+                        # tick音を再生（設定されている場合）
+                        if self.settings['sound_tick']:
+                            self.play_sound('tick')
+                        
+                        # UIを更新（メインスレッドで実行）
+                        self.root.after(0, self.update_display)
         
         # タイマー終了
-        if self.remaining_seconds == 0 and self.is_running:
+        if self.remaining_seconds == 0 and self.is_running and not self.stop_event.is_set():
             self.on_timer_complete()
     
     def update_display(self):
