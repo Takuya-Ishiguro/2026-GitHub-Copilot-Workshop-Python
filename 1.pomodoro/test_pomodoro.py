@@ -28,12 +28,22 @@ class TestParticle(unittest.TestCase):
         """パーティクルの位置が更新されるか"""
         particle = Particle(100, 100, 400, 400)
         initial_x, initial_y = particle.x, particle.y
-        particle.update()
-        # 位置が変わることを確認（速度が0でない限り）
-        self.assertTrue(
-            particle.x != initial_x or particle.y != initial_y or 
-            (particle.vx == 0 and particle.vy == 0)
-        )
+        initial_vx, initial_vy = particle.vx, particle.vy
+        
+        # 速度が設定されていることを確認
+        self.assertIsNotNone(particle.vx)
+        self.assertIsNotNone(particle.vy)
+        
+        # 複数回更新して、位置が変化することを確認
+        for _ in range(10):
+            particle.update()
+        
+        # 速度が0でない限り、位置は変化する
+        if initial_vx != 0 or initial_vy != 0:
+            self.assertTrue(
+                particle.x != initial_x or particle.y != initial_y,
+                "パーティクルの位置が更新されませんでした"
+            )
         
     def test_particle_boundary(self):
         """パーティクルが境界内に収まるか"""

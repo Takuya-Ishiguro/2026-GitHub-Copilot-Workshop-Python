@@ -8,7 +8,8 @@ import sys
 import os
 import random
 
-# app.pyから必要な部分のみをインポートせずに再実装
+# 注: Tkinterへの依存を避けるため、app.pyからインポートせず、
+# 必要なクラスを独立して再実装してテストを行います
 class ParticleSimulation:
     """パーティクルシミュレーション（GUI不要版）"""
     

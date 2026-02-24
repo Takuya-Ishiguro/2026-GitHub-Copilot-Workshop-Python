@@ -25,7 +25,7 @@ def format_time(seconds):
 
 
 def draw_circular_progress_ascii(progress, width=40):
-    """ASCII アートで円形プログレスバーを描画"""
+    """ASCII アートで円形プログレスバーを描画（時計回り、上から開始）"""
     center_x, center_y = width // 2, width // 2
     radius = width // 2 - 2
     
@@ -39,13 +39,15 @@ def draw_circular_progress_ascii(progress, width=40):
             
             # 円の描画
             if abs(distance - radius) < 1.5:
-                # 角度を計算（上から時計回り）
+                # 角度を計算（上から時計回り、メインアプリと同じ）
                 angle = math.atan2(dy, dx)
-                # -90度から開始（上を0度にする）
+                # 上を0度として時計回りに計算
                 angle_deg = (math.degrees(angle) + 90) % 360
                 
-                # プログレスバーの表示
-                if angle_deg <= 360 * progress:
+                # プログレスバーの表示（時計回り）
+                # 360度からの差分で計算することで時計回りを実現
+                remaining_angle = 360 * (1 - progress)
+                if angle_deg >= remaining_angle:
                     line.append("●")
                 else:
                     line.append("○")
