@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポモドーロタイマー</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="app-container">
+        <div class="timer-card">
+            <!-- ヘッダー -->
+            <div class="header">
+                <h1 class="title">ポモドーロタイマー</h1>
+                <div class="window-controls">
+                    <span class="control">−</span>
+                    <span class="control">□</span>
+                    <span class="control">×</span>
+                </div>
+            </div>
+
+            <!-- ステータス表示 -->
+            <div class="status">作業中</div>
+
+            <!-- タイマー表示エリア（円形プログレスバーはステップ2で実装） -->
+            <div class="timer-display">
+                <div class="timer-circle">
+                    <div id="timer" class="timer-text">25:00</div>
+                </div>
+            </div>
+
+            <!-- コントロールボタン -->
+            <div class="controls">
+                <button id="startBtn" class="btn btn-primary">開始</button>
+                <button id="resetBtn" class="btn btn-secondary">リセット</button>
+            </div>
+
+            <!-- 今日の進捗（ダミーデータ） -->
+            <div class="progress-section">
+                <h2 class="progress-title">今日の進捗</h2>
+                <div class="progress-stats">
+                    <div class="stat">
+                        <div id="pomodoroCount" class="stat-value">0</div>
+                        <div class="stat-label">完了</div>
+                    </div>
+                    <div class="stat">
+                        <div id="totalTime" class="stat-value">0分</div>
+                        <div class="stat-label">集中時間</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/timer.js') }}"></script>
+</body>
+</html>

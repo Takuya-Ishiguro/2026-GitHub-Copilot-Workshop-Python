@@ -1,0 +1,169 @@
+/* ポモドーロタイマーのスタイル */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.app-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.timer-card {
+    background: #f8f9fa;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* ヘッダー */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.window-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.control {
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* ステータス */
+.status {
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* タイマー表示 */
+.timer-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.timer-circle {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.timer-text {
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+}
+
+/* コントロールボタン */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.btn {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #667eea;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #5568d3;
+    transform: translateY(-2px);
+}
+
+.btn-primary:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secondary {
+    background: white;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-secondary:hover {
+    background: #f0f3ff;
+    transform: translateY(-2px);
+}
+
+/* 進捗セクション */
+.progress-section {
+    background: #e9ecef;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.progress-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #666;
+}
