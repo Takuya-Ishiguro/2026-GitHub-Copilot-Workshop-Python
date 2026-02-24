@@ -11,12 +11,10 @@ def get_progress_color_name(remaining_seconds, total_seconds):
     """色名を取得"""
     progress = remaining_seconds / total_seconds
     
-    if progress > 0.66:
-        return "青"
-    elif progress > 0.33:
-        return "黄"
+    if progress > 0.5:
+        return "青系（青→黄グラデーション）"
     else:
-        return "赤"
+        return "赤系（黄→赤グラデーション）"
 
 
 def format_time(seconds):
@@ -104,9 +102,8 @@ def main():
    - 60FPSで更新される流れるようなアニメーション
    
 2. 色の変化
-   - 青 (#00d4ff): 100% → 50% - まだ十分に時間があります
-   - 黄 (#ffd700): 50% → 25% - 半分が経過しました
-   - 赤 (#ff4444): 25% → 0% - もうすぐ終了です
+   - 100% → 50%: 青 (#00d4ff) から黄 (#ffd700) へグラデーション
+   - 50% → 0%: 黄 (#ffd700) から赤 (#ff4444) へグラデーション
    
 3. 背景エフェクト
    - パーティクルエフェクト: 50個のパーティクルが動き回る
