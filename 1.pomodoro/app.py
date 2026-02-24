@@ -320,7 +320,7 @@ class PomodoroTimer:
         self.time_label.config(text=self.format_time(self.remaining_seconds))
         
     def animate(self):
-        """アニメーションループ（60fps目標）"""
+        """アニメーションループ（約60fps）"""
         self.draw_circular_progress()
         self.root.after(self.FRAME_DELAY_MS, self.animate)
         
