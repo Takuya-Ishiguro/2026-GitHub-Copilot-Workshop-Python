@@ -52,7 +52,7 @@ class TestPomodoroDatabase(unittest.TestCase):
     def test_level_up(self):
         """レベルアップのテスト"""
         # レベルアップに必要なXP（500 XP）を獲得するために5回ポモドーロを完了
-        for i in range(5):
+        for _ in range(5):
             result = self.db.add_pomodoro(25)
         
         # レベル2になっているはず
@@ -81,7 +81,7 @@ class TestPomodoroDatabase(unittest.TestCase):
     def test_badges_total_10(self):
         """10回達成バッジのテスト"""
         # 10回ポモドーロを完了
-        for i in range(10):
+        for _ in range(10):
             self.db.add_pomodoro(25)
         
         badges = self.db.check_and_award_badges()
@@ -96,7 +96,7 @@ class TestPomodoroDatabase(unittest.TestCase):
     def test_weekly_stats(self):
         """週間統計のテスト"""
         # 今日3回完了
-        for i in range(3):
+        for _ in range(3):
             self.db.add_pomodoro(25)
         
         weekly = self.db.get_weekly_stats()
@@ -111,7 +111,7 @@ class TestPomodoroDatabase(unittest.TestCase):
     def test_monthly_stats(self):
         """月間統計のテスト"""
         # 5回完了
-        for i in range(5):
+        for _ in range(5):
             self.db.add_pomodoro(25)
         
         monthly = self.db.get_monthly_stats()
