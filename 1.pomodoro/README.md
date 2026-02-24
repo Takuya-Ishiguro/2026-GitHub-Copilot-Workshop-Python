@@ -59,6 +59,12 @@ pip install -r requirements.txt
 python app.py
 ```
 
+**開発時のデバッグモード**（本番環境では使用しないでください）:
+```bash
+export FLASK_DEBUG=true
+python app.py
+```
+
 3. ブラウザで以下のURLにアクセス:
 ```
 http://localhost:5000
