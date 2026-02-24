@@ -53,6 +53,9 @@ class PomodoroTimer:
     SHORT_BREAK = 5
     LONG_BREAK = 15
     
+    # アニメーション設定
+    FRAME_DELAY_MS = 16  # 約60FPS（1000ms / 60 ≈ 16ms）
+    
     def __init__(self, root):
         self.root = root
         self.root.title("ポモドーロタイマー - 視覚的フィードバック強化版")
@@ -319,7 +322,7 @@ class PomodoroTimer:
     def animate(self):
         """アニメーションループ（60fps目標）"""
         self.draw_circular_progress()
-        self.root.after(16, self.animate)  # 約60fps
+        self.root.after(self.FRAME_DELAY_MS, self.animate)
         
     def tick(self):
         """1秒ごとのタイマー更新"""

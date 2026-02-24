@@ -12,6 +12,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from app import Particle, PomodoroTimer
 
+# テスト定数
+NUM_UPDATE_ITERATIONS = 100  # パーティクル更新の反復回数
+
 
 class TestParticle(unittest.TestCase):
     """Particleクラスのテスト"""
@@ -48,7 +51,7 @@ class TestParticle(unittest.TestCase):
     def test_particle_boundary(self):
         """パーティクルが境界内に収まるか"""
         particle = Particle(100, 100, 400, 400)
-        for _ in range(100):
+        for _ in range(NUM_UPDATE_ITERATIONS):
             particle.update()
             self.assertGreaterEqual(particle.x, 0)
             self.assertLessEqual(particle.x, 400)
